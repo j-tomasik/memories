@@ -10,6 +10,7 @@ import { createPost, updatePost } from '../../actions/posts';
     
 const Form = ({currentId, setCurrentId}) => {
     const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' })
+    
     const classes = useStyles();
     const dispatch = useDispatch();
 
