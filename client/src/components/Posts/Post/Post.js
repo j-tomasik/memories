@@ -19,7 +19,7 @@ const Post = ({ post, setCurrentId }) => {
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title}/>
             <div className={classes.overlay}>
                 <Typography variant='h6'>{post.creator}</Typography>
-                <Typography variant='body2'>{moment(post.createedAt).fromNow()}</Typography>
+                <Typography variant='body2'>{moment(post.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
                 <Button style={{color: 'white'}} size="small" onClick={() => setCurrentId(post._id)}>
@@ -31,7 +31,7 @@ const Post = ({ post, setCurrentId }) => {
             </div>
                 <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
             <CardContent>
-                <Typography variant="h5" gutterBottom>{post.message}</Typography>
+                <Typography variant="body2" color={"textSecondary"} component="p" >{post.message}</Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
 
