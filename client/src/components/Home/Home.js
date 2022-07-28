@@ -4,10 +4,11 @@ import { Container, Grow, Grid } from '@material-ui/core';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
 import { useDispatch } from 'react-redux';
-import { getPosts } from '../../actions/posts'
+import { getPosts } from '../../actions/posts';
+import useStyles from './styles';
 
 
-export const Home = () => {
+const Home = () => {
     const [currentId, setCurrentId] = useState(null);
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -32,3 +33,4 @@ export const Home = () => {
             </Grow>
     )
 }
+export default Home;
