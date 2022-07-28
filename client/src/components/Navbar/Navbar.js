@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { AppBar, Avatar, Toolbar, Typography } from '@material-ui/core'
+import { AppBar, Avatar, Toolbar, Typography, Button } from '@material-ui/core'
 
 import useStyles from './styles'
 import memories from '../../images/memories.png';
@@ -20,9 +20,10 @@ const Navbar = () => {
                     <div className={classes.profile}>
                         <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
                         <Typography className={classes.userNmae} variant="h6">{user.result.name}</Typography>
+                        <Button variant="contained" className={classes.logout}>Logout</Button>
                     </div>
                 ) : (
-
+                    <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
                 )}
             </Toolbar>
     </AppBar>
