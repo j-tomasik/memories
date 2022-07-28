@@ -7,7 +7,7 @@ import Input from './Input';
 const Auth = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
-    const isSignup = false;
+    const isSignup = true;
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
