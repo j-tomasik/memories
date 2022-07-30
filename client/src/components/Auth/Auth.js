@@ -48,11 +48,11 @@ const Auth = () => {
     return (
         <Container component="main" maxwidth="xs">
             <Paper className={classes.paper} elevation={3}>
-                <Avatar classsNmae={classes.avatar}>
+                <Avatar classsname={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
-                <form classsName={classes.form} onSubmit={handleSubmit}>
+                <form classsname={classes.form} onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         {
                             isSignup && (
@@ -82,7 +82,7 @@ const Auth = () => {
                         cookiePolicy="single_host_origin"
                     />
                     
-                    <Grid container justify="flex-end">
+                    <Grid container justifyContent="flex-end">
                         <Grid item>
                             <Button onClick={switchMode}>
                                 { isSignup ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
