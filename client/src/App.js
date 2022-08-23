@@ -6,14 +6,13 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import Auth from "./components/Auth/Auth";
-import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const App = () => {
 
 
 
     return(
-        <GoogleOAuthProvider clientId="">
+        
             <BrowserRouter>
                 <Container maxwidth="lg">
                     <Navbar />
@@ -24,7 +23,7 @@ const App = () => {
                     
                 </Container>
             </BrowserRouter>
-        </GoogleOAuthProvider>
+        
         
         
     )
