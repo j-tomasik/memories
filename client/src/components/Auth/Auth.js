@@ -8,6 +8,7 @@ import Icon from './icon';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import useStyles from './styles';
 import Input from './Input';
+import { GoogleLogin, googleLogout } from '@react-oauth/google';
 
 const Auth = () => {
     const classes = useStyles();
@@ -73,6 +74,11 @@ const Auth = () => {
                     <Button type='submit' fullWidth variant='contained' color="primary" className={classes.submit} >
                             {isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
+
+                    <GoogleLogin 
+                        onSuccess={(response) => console.log(response)}
+                        onError={() => console.log('error')}
+                    />
 
                     {/* <GoogleLogin 
                         clientId="928827288634-52atmhfp7s214ukcb93qggcavjmgp361.apps.googleusercontent.com"
