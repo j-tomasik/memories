@@ -5,10 +5,13 @@ import { legacy_createStore as createStore, legacy_createStore} from 'redux'
 import {  applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 
+
 import reducers from './reducers'
 
 import App from "./App";
 import './index.css';
+
+require('dotenv').config();
 
 const store = legacy_createStore(reducers, compose(applyMiddleware(thunk)))
 

@@ -6,6 +6,7 @@ import Form from '../Form/Form';
 import { useDispatch } from 'react-redux';
 import { getPosts } from '../../actions/posts';
 import useStyles from './styles';
+import { GoogleLogin, googleLogout } from '@react-oauth/google';
 
 
 const Home = () => {
@@ -21,6 +22,10 @@ const Home = () => {
     return (
             <Grow in>
                 <Container>
+                    <GoogleLogin client_id = {"389219677395-hp7u1fgqgpj1rll3v4hurr1s38mclnkv.apps.googleusercontent.com"}
+                        onSuccess={(response) => console.log(response)}
+                        onError={() => console.log('error')}
+                    />
                     <Grid container className={classes.mainContainer} justifyContent="space-between" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={7}>
                             <Posts setCurrentId={setCurrentId}/>

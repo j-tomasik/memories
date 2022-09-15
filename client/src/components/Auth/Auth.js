@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core'
 
 import { useDispatch } from 'react-redux';
@@ -9,6 +9,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import useStyles from './styles';
 import Input from './Input';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
+import jwt_decode from "jwt-decode";
 
 const Auth = () => {
     const classes = useStyles();
@@ -26,6 +27,19 @@ const Auth = () => {
     const handleChange = () => {
 
     } 
+    function handleCallbackResponse(response) {
+        var userObject = jwt_decode(response.credential)
+        console.log(userObject);
+    }
+
+
+    useEffect(() => {
+        /* global google */
+        google.accounts.id.initialize({
+            client_id: "389219677395-hp7u1fgqgpj1rll3v4hurr1s38mclnkv.apps.googleusercontent.com",
+            callback: handleCallbackResponse
+        })
+    }, [])
     
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
@@ -56,6 +70,7 @@ const Auth = () => {
                 <Avatar classsname={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
+
                 <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
                 <form classsname={classes.form} onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
@@ -75,13 +90,9 @@ const Auth = () => {
                             {isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
 
-                    <GoogleLogin 
-                        onSuccess={(response) => console.log(response)}
-                        onError={() => console.log('error')}
-                    />
 
-                    {/* <GoogleLogin 
-                        clientId="928827288634-52atmhfp7s214ukcb93qggcavjmgp361.apps.googleusercontent.com"
+                    <GoogleLogin 
+                        client_id = {"389219677395-hp7u1fgqgpj1rll3v4hurr1s38mclnkv.apps.googleusercontent.com"}
                         render={(renderProps) => (
                                 <Button className={classes.googleButton} color='primary' fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
                                 Google Sign In
@@ -90,7 +101,7 @@ const Auth = () => {
                         onSuccess={googleSuccess}
                         onFailure={googleFailure}
                         cookiePolicy="single_host_origin"
-                    /> */}
+                    />
                     
                     <Grid container justifyContent="flex-end">
                         <Grid item>

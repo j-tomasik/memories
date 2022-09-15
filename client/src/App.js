@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from '@material-ui/core'
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
+import {GoogleOAuthProvider } from '@react-oauth/google';
 
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
@@ -12,7 +12,7 @@ const App = () => {
 
 
     return(
-        
+        <GoogleOAuthProvider client_id = {process.env.NEXT_PUBLIC_GOOGLE_API_TOKEN}>
             <BrowserRouter>
                 <Container maxwidth="lg">
                     <Navbar />
@@ -23,6 +23,8 @@ const App = () => {
                     
                 </Container>
             </BrowserRouter>
+        </GoogleOAuthProvider>
+            
         
         
         
