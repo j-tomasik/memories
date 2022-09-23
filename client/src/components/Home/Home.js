@@ -6,7 +6,9 @@ import Form from '../Form/Form';
 import { useDispatch } from 'react-redux';
 import { getPosts } from '../../actions/posts';
 import useStyles from './styles';
-import { GoogleLogin, googleLogout } from '@react-oauth/google';
+import { ContextHolder } from '@frontegg/rest-api';
+import { useAuth, useLoginWithRedirect } from "@frontegg/react";
+
 
 
 const Home = () => {
@@ -17,15 +19,26 @@ const Home = () => {
     useEffect(() => {
         dispatch(getPosts());
     }, [currentId, dispatch]);
+
+    const { user, isAuthenticated } = useAuth();
+    const loginWithRedirect = useLoginWithRedirect();
+
+    useEffect(() => {
+    if (!isAuthenticated) {
+        loginWithRedirect();
+    }
+        }, [isAuthenticated, loginWithRedirect]);
+
+    const logout = () => {
+        const baseUrl = ContextHolder.getContext().baseUrl;
+        window.location.href = `${baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location}`;
+    };
     
 
     return (
             <Grow in>
                 <Container>
-                    <GoogleLogin client_id = {"389219677395-hp7u1fgqgpj1rll3v4hurr1s38mclnkv.apps.googleusercontent.com"}
-                        onSuccess={(response) => console.log(response)}
-                        onError={() => console.log('error')}
-                    />
+        
                     <Grid container className={classes.mainContainer} justifyContent="space-between" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={7}>
                             <Posts setCurrentId={setCurrentId}/>
