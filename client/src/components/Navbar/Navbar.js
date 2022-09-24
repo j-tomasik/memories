@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import useStyles from './styles'
 import memories from '../../images/memories.png';
 import { ContextHolder } from '@frontegg/rest-api';
-import { useAuth, useLoginWithRedirect } from "@frontegg/react";
+import { useAuth, useLoginWithRedirect, AdminPortal } from "@frontegg/react";
 
 const Navbar = () => {
     const classes = useStyles();
@@ -27,6 +27,10 @@ const Navbar = () => {
     const logout = () => {
         const baseUrl = ContextHolder.getContext().baseUrl;
         window.location.href = `${baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location}`;
+    };
+
+    const handleClick = () => {
+        AdminPortal.show();
     };
 
     
@@ -54,6 +58,7 @@ const Navbar = () => {
             <div>
                 <button onClick={() => logout()}>Click to logout</button>
             </div>
+            <button onClick={handleClick}>Settings</button>
         </div>
         ) : (
             <div>
