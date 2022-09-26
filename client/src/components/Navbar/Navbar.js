@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import useStyles from './styles'
 import memories from '../../images/memories.png';
 import { ContextHolder } from '@frontegg/rest-api';
-import { useAuth, useLoginWithRedirect, AdminPortal } from "@frontegg/react";
+import { useAuth, useLoginWithRedirect, AdminPortal, useAuthActions } from "@frontegg/react";
 
 const Navbar = () => {
     const classes = useStyles();
@@ -15,12 +15,13 @@ const Navbar = () => {
     // const history = useHistory();
     // const location = useLocation();
 
+    const { switchTenant } = useAuthActions();
     const { user, isAuthenticated } = useAuth();
     const loginWithRedirect = useLoginWithRedirect();
 
     useEffect(() => {
         if (!isAuthenticated) {
-    loginWithRedirect();
+            loginWithRedirect();
         }
     }, [isAuthenticated, loginWithRedirect]);
 
@@ -32,6 +33,10 @@ const Navbar = () => {
     const handleClick = () => {
         AdminPortal.show();
     };
+
+    const handleSwitchTenant = () => {
+        switchTenant({ tenantId: 'new-tenant-id' });
+    }
 
     
 
@@ -59,6 +64,7 @@ const Navbar = () => {
                 <button onClick={() => logout()}>Click to logout</button>
             </div>
             <button onClick={handleClick}>Settings</button>
+            <button onClick={handleSwitchTenant}>Select Active Tenant</button>
         </div>
         ) : (
             <div>
