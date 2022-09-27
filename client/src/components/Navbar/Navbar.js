@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
-import { AppBar, Avatar, Toolbar, Typography, Button } from '@material-ui/core'
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { AppBar,  Toolbar, Typography } from '@material-ui/core'
 import { useDispatch } from 'react-redux';
 
 import useStyles from './styles'
@@ -34,11 +34,24 @@ const Navbar = () => {
         AdminPortal.show();
     };
 
-    const handleSwitchTenant = () => {
-        switchTenant({ tenantId: 'new-tenant-id' });
+    const handleSwitchTenant = (newTenantId) => {
+        switchTenant({ tenantId: newTenantId });
     }
 
-    
+    const createDropdown = () => {
+        let select = document.getElementById('list');
+        console.log(user.tenantIds);
+        for(let i = 0; i < user.tenantIds; i++) {
+            
+            let btn = document.createElement("li");
+            btn.textContent = user.tenantIds[i];
+            btn.value = user.tenantIds[i];
+            btn.onclick = handleSwitchTenant(user.tenantIds[i]);
+            select.appendChild(btn);
+
+        }
+    }
+
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
@@ -63,8 +76,13 @@ const Navbar = () => {
             <div>
                 <button onClick={() => logout()}>Click to logout</button>
             </div>
+            
             <button onClick={handleClick}>Settings</button>
+
             <button onClick={handleSwitchTenant}>Select Active Tenant</button>
+            <button onClick={createDropdown}>Select a Tenant</button>
+            <ul className="dropdown" id='list'></ul>
+
         </div>
         ) : (
             <div>
