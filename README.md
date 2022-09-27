@@ -1,6 +1,7 @@
 # memories
 
-First install node packages in both the client folder and in the server folder
+First install node packages in both the client folder and in the server folder.
+
 cd client, npm install
 cd server, npm install
 
