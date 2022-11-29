@@ -6,8 +6,7 @@ import Form from '../Form/Form';
 import { useDispatch } from 'react-redux';
 import { getPosts } from '../../actions/posts';
 import useStyles from './styles';
-import { ContextHolder } from '@frontegg/rest-api';
-import { useAuth, useLoginWithRedirect } from "@frontegg/react";
+
 
 
 
@@ -20,19 +19,18 @@ const Home = () => {
         dispatch(getPosts());
     }, [currentId, dispatch]);
 
-    const { user, isAuthenticated } = useAuth();
-    const loginWithRedirect = useLoginWithRedirect();
 
-    useEffect(() => {
-    if (!isAuthenticated) {
-        loginWithRedirect();
-    }
-        }, [isAuthenticated, loginWithRedirect]);
 
-    const logout = () => {
-        const baseUrl = ContextHolder.getContext().baseUrl;
-        window.location.href = `${baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location}`;
-    };
+    // useEffect(() => {
+    // if (!isAuthenticated) {
+    //     loginWithRedirect();
+    // }
+        // }, [isAuthenticated, loginWithRedirect]);
+
+    // const logout = () => {
+    //     const baseUrl = ContextHolder.getContext().baseUrl;
+    //     window.location.href = `${baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location}`;
+    // };
     
 
     return (
