@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 
 import useStyles from './styles'
 import memories from '../../images/memories.png';
-// import { ContextHolder } from '@frontegg/rest-api';
-// import { useAuth, useLoginWithRedirect, AdminPortal, useAuthActions } from "@frontegg/react";
 
 const Navbar = () => {
     const classes = useStyles();
