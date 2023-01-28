@@ -9,8 +9,13 @@
 // import useStyles from './styles';
 // import Input from './Input';
 
+import { GoogleLogin } from '@react-oauth/google';
 
-// const Auth = () => {
+
+/>;
+
+
+const Auth = () => {
 //     const classes = useStyles();
 //     const [showPassword, setShowPassword] = useState(false);
 //     const [isSignup, setIsSignup] = useState(false);
@@ -39,8 +44,15 @@
 //         handleShowPassword(false)
 //     }
 
+    return (
 
-//     return (
+        <GoogleLogin
+  onSuccess={credentialResponse => {
+    console.log(credentialResponse);
+  }}
+  onError={() => {
+    console.log('Login Failed');
+  }}
 //         <Container component="main" maxwidth="xs">
 //             <Paper className={classes.paper} elevation={3}>
 //                 <Avatar classsname={classes.avatar}>
@@ -78,7 +90,8 @@
 //                 </form>
 //             </Paper>
 //         </Container>
-//     )
-// }
+     )
+}
 
-// export default Auth;
+export default Auth;
+
