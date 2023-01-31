@@ -21,17 +21,6 @@ const Home = () => {
 
 
 
-    // useEffect(() => {
-    // if (!isAuthenticated) {
-    //     loginWithRedirect();
-    // }
-        // }, [isAuthenticated, loginWithRedirect]);
-
-    // const logout = () => {
-    //     const baseUrl = ContextHolder.getContext().baseUrl;
-    //     window.location.href = `${baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location}`;
-    // };
-    
 
     return (
             <Grow in>
