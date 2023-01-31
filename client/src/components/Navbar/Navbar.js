@@ -8,47 +8,7 @@ import memories from '../../images/memories.png';
 
 const Navbar = () => {
     const classes = useStyles();
-    // const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    // const dispatch = useDispatch();
-    // const history = useHistory();
-    // const location = useLocation();
-
-    // const { switchTenant } = useAuthActions();
-    // const { user, isAuthenticated } = useAuth();
-    // const loginWithRedirect = useLoginWithRedirect();
-
-    // useEffect(() => {
-    //     if (!isAuthenticated) {
-    //         loginWithRedirect();
-    //     }
-    // }, [isAuthenticated, loginWithRedirect]);
-
-    // const logout = () => {
-    //     const baseUrl = ContextHolder.getContext().baseUrl;
-    //     window.location.href = `${baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location}`;
-    // };
-
-    // const handleClick = () => {
-    //     AdminPortal.show();
-    // };
-
-    // const handleSwitchTenant = (newTenantId) => {
-    //     switchTenant({ tenantId: newTenantId });
-    // }
-
-    // const createDropdown = () => {
-    //     let select = document.getElementById('list');
-    //     console.log(user.tenantIds);
-    //     for(let i = 0; i < user.tenantIds; i++) {
-            
-    //         let btn = document.createElement("li");
-    //         btn.textContent = user.tenantIds[i];
-    //         btn.value = user.tenantIds[i];
-    //         btn.onclick = handleSwitchTenant(user.tenantIds[i]);
-    //         select.appendChild(btn);
-
-    //     }
-    // }
+    
 
 
     return (
