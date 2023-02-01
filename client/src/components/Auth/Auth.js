@@ -20,7 +20,6 @@ const Auth = () => {
     return (
 
         <GoogleLogin
-            clientId={process.env.GOOGLE_API_TOKEN}
             onSuccess={credentialResponse => {
                 console.log(credentialResponse);
             }}

@@ -19,11 +19,11 @@ const store = legacy_createStore(reducers, compose(applyMiddleware(thunk)))
 
 ReactDOM.render(
 
-        <Provider store={store}>
-            <GoogleOAuthProvider clientId={process.env.GOOGLE_API_TOKEN}>
-                <App />
-            </GoogleOAuthProvider>
+        <GoogleOAuthProvider client_id={process.env.GOOGLE_API_TOKEN}>
+            <Provider store={store}>           
+                <App />               
+            </Provider>,
+        </GoogleOAuthProvider>,
             
-        </Provider>,
 
     document.getElementById('root'));
