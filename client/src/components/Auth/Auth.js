@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core'
 
 // import { useDispatch } from 'react-redux';
@@ -20,6 +20,7 @@ const Auth = () => {
     return (
 
         <GoogleLogin
+            clientId={process.env.GOOGLE_API_TOKEN}
             onSuccess={credentialResponse => {
                 console.log(credentialResponse);
             }}
