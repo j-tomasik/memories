@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core'
+import { createOrGetUser } from '../../api/index';
 
 // import { useDispatch } from 'react-redux';
 // import { useHistory } from 'react-router-dom';
@@ -16,16 +16,18 @@ import { GoogleLogin } from '@react-oauth/google';
 
 
 const Auth = () => {
-
+    
     return (
-
-        <GoogleLogin
-            onSuccess={credentialResponse => {
-                console.log(credentialResponse);
-            }}
-            onError={() => {
-                console.log('Login Failed');
-        }}/>
+    
+            <GoogleLogin
+                onSuccess={(response) => {
+                    createOrGetUser(response);
+                }}
+                onError={() => {
+                    console.log('Login Failed');
+            }}/>
+    
+        
 //        
     )
 }
