@@ -6,6 +6,8 @@ const url = 'http://localhost:5000/posts';
 export const createOrGetUser = async (response) => {
     const decoded = jwt_decode(response.credential);
     console.log(decoded);
+
+    
 }
 
 
