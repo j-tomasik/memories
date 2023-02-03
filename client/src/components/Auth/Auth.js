@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createOrGetUser } from '../../api/index';
 
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import { useHistory } from 'react-router-dom';
 
 // import Icon from './icon';
@@ -16,12 +16,14 @@ import { GoogleLogin } from '@react-oauth/google';
 
 
 const Auth = () => {
+    const dispatch = useDispatch();
     
     return (
     
             <GoogleLogin
                 onSuccess={(response) => {
-                    createOrGetUser(response);
+                    let decodedData = createOrGetUser(response);
+                    dispatch({ type: 'AUTH', data: decodedData})
                 }}
                 onError={() => {
                     console.log('Login Failed');
