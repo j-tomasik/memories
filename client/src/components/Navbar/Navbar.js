@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { AppBar,  Avatar,  Button,  Toolbar, Typography } from '@material-ui/core'
 import { useDispatch } from 'react-redux';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
@@ -10,21 +10,23 @@ import { LOGOUT } from '../../constants/actionTypes';
 
 const Navbar = () => {
     const classes = useStyles();
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    const dispatch = useDispatch()
+    const [user, setUser] = useState(null);
+    const dispatch = useDispatch();
+    const history = useHistory()
     
 
     useEffect(() => {
-        const token = user;
 
         setUser(JSON.parse(localStorage.getItem('profile')));
-        console.log(user);
+        console.log('local stoage on load', localStorage)
+        console.log('user obj on load', user);
     }, []);
 
     const logOut = () => {
         googleLogout();
         setUser(null);
-        dispatch({type: 'LOGOUT'})
+        dispatch({type: LOGOUT});
+        history.push('/')
     }
 
     return (
@@ -38,8 +40,8 @@ const Navbar = () => {
                 {user ? (
                     <div className={classes.profile}>
                         //change these values based on what the user obj holds from console log
-                        <Avatar className={classes.purple} alt={user.name} src={user.picture}>{user.family_name.charAt(0)}</Avatar>
-                        <Typography className={classes.userName} variant='h6'>{user.family_name}</Typography>
+                        <Avatar alt={user.name} src={user.picture}>{console.log(user)}</Avatar>
+                        <Typography className={classes.userName} variant='h6'>Welcome {user.family_name}!</Typography>
                         <Button variant='contained' className={classes.logout} color='secondary' onClick={logOut}>Logout</Button>
                     </div>
 

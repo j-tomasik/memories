@@ -18,6 +18,7 @@ import { GoogleLogin } from '@react-oauth/google';
 const Auth = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    console.log(localStorage)
     
     return (
     
