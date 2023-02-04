@@ -6,18 +6,26 @@ import { GoogleLogin, googleLogout } from '@react-oauth/google';
 
 import useStyles from './styles'
 import memories from '../../images/memories.png';
+import { LOGOUT } from '../../constants/actionTypes';
 
 const Navbar = () => {
     const classes = useStyles();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-
-    console.log(user);
+    const dispatch = useDispatch()
+    
 
     useEffect(() => {
         const token = user;
 
-        setUser(JSON.parse(localStorage.getItem('profile')))
-    }, [])
+        setUser(JSON.parse(localStorage.getItem('profile')));
+        console.log(user);
+    }, []);
+
+    const logOut = () => {
+        googleLogout();
+        setUser(null);
+        dispatch({type: 'LOGOUT'})
+    }
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
@@ -29,10 +37,10 @@ const Navbar = () => {
             <Toolbar className={classes.profile}>
                 {user ? (
                     <div className={classes.profile}>
-                        //make sure to console.log the profile to check and make sure where can be rendered
-                        <Avatar className={classes.purple} alt={user.result.name} src={user.result.picture}>{user.result.family_name.charAt(0)}</Avatar>
-                        <Typography className={classes.userName} variant='h6'>{user.result.family_name}</Typography>
-                        <Button variant='contained' className={classes.logout} color='secondary' onClick={googleLogout}>Logout</Button>
+                        //change these values based on what the user obj holds from console log
+                        <Avatar className={classes.purple} alt={user.name} src={user.picture}>{user.family_name.charAt(0)}</Avatar>
+                        <Typography className={classes.userName} variant='h6'>{user.family_name}</Typography>
+                        <Button variant='contained' className={classes.logout} color='secondary' onClick={logOut}>Logout</Button>
                     </div>
 
                 ) : (
