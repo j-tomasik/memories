@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { AppBar,  Avatar,  Button,  Toolbar, Typography } from '@material-ui/core'
 import { useDispatch } from 'react-redux';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
@@ -12,21 +12,27 @@ const Navbar = () => {
     const classes = useStyles();
     const [user, setUser] = useState(null);
     const dispatch = useDispatch();
-    const history = useHistory()
+    const history = useHistory();
+    const location = useLocation();
     
 
     useEffect(() => {
 
         setUser(JSON.parse(localStorage.getItem('profile')));
-        console.log('local stoage on load', localStorage)
-        console.log('user obj on load', user);
-    }, []);
+        console.log('user in useEffect', user);
+        console.log('local storage in useEffect', localStorage)
+        // if(user && Object.keys(user).length === 0) {
+        //     setUser(null);
+        // };
+        // console.log('user after if check', user)
+    }, [location]);
 
     const logOut = () => {
         googleLogout();
-        setUser(null);
+        
         dispatch({type: LOGOUT});
-        history.push('/')
+        history.push('/auth');
+        setUser(null);
     }
 
     return (
@@ -39,9 +45,8 @@ const Navbar = () => {
             <Toolbar className={classes.profile}>
                 {user ? (
                     <div className={classes.profile}>
-                        //change these values based on what the user obj holds from console log
-                        <Avatar alt={user.name} src={user.picture}>{console.log(user)}</Avatar>
-                        <Typography className={classes.userName} variant='h6'>Welcome {user.family_name}!</Typography>
+                        <Avatar alt={user.name} src={user.picture}></Avatar>
+                        <Typography className={classes.userName} variant='h6'>Welcome {user.given_name}!</Typography>
                         <Button variant='contained' className={classes.logout} color='secondary' onClick={logOut}>Logout</Button>
                     </div>
 

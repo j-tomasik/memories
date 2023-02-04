@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createOrGetUser } from '../../api/index';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { AUTH } from '../../constants/actionTypes'
 // import { useHistory } from 'react-router-dom';
 
 // import Icon from './icon';
@@ -18,14 +19,14 @@ import { GoogleLogin } from '@react-oauth/google';
 const Auth = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    console.log(localStorage)
+    console.log('local storage at auth', localStorage)
     
     return (
     
             <GoogleLogin
                 onSuccess={(response) => {
                     let decodedData = createOrGetUser(response);
-                    dispatch({ type: 'AUTH', data: decodedData});
+                    dispatch({ type: AUTH, data: decodedData});
 
                     history.push('/'); 
                 }}
