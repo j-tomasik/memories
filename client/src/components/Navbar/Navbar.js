@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { AppBar,  Avatar,  Button,  Toolbar, Typography } from '@material-ui/core'
 import { useDispatch } from 'react-redux';
-import { GoogleLogin, googleLogout } from '@react-oauth/google';
+import { googleLogout } from '@react-oauth/google';
 
 import useStyles from './styles'
 import memories from '../../images/memories.png';
@@ -51,7 +51,7 @@ const Navbar = () => {
                     </div>
 
                 ) : (
-                    ''// <Button component={Link} to='/auth' variant='contained' color='primary'>Sign In</Button>
+                    <Button component={Link} to='/auth' variant='contained' color='primary'>Sign In</Button>
                 )}
             </Toolbar>    
         </AppBar>
