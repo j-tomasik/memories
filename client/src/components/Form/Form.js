@@ -24,9 +24,9 @@ const Form = ({currentId, setCurrentId}) => {
 
         if(currentId === 0) {
             //might not need result, just .name
-            dispatch(createPost({...postData, name: user?.result.name}));
+            dispatch(createPost({...postData, name: user?.name}));
         } else {
-            dispatch(updatePost(currentId, {...postData, name: user?.result.name}));
+            dispatch(updatePost(currentId, {...postData, name: user?.name}));
         }
         clear();
         
@@ -37,12 +37,14 @@ const Form = ({currentId, setCurrentId}) => {
         setPostData({ title: '', message: '', tags: '', selectedFile: '' })
     }
 
-    if(!user?.result.name) {
-        <Paper className={classes.paper}>
-            <Typography variant='h6' align='center'>
-                Please click the sign in button above to create your own photos upload and like other's posts.
-            </Typography>
-        </Paper>
+    if(!user?.name) {
+        return(
+            <Paper className={classes.paper}>
+                <Typography variant='h6' align='center'>
+                    Please click the sign in button above to create your own photos upload and like other's posts.
+                </Typography>
+            </Paper>
+        )
     }
 
     return(

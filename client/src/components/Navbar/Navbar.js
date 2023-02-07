@@ -19,8 +19,8 @@ const Navbar = () => {
     useEffect(() => {
 
         setUser(JSON.parse(localStorage.getItem('profile')));
-        console.log('user in useEffect', user);
-        console.log('local storage in useEffect', localStorage)
+        // console.log('user in useEffect', user);
+        // console.log('local storage in useEffect', localStorage)
         // if(user && Object.keys(user).length === 0) {
         //     setUser(null);
         // };
