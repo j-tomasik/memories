@@ -5,7 +5,7 @@ const url = 'http://localhost:5000/posts';
 
 export const createOrGetUser = (response) => {
     const decoded = jwt_decode(response.credential);
-    console.log('decoded token in getUsER', decoded);
+    console.log('decoded token in getUser', decoded);
 
     return decoded;
 }
