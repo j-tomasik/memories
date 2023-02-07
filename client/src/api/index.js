@@ -3,7 +3,16 @@ import jwt_decode from 'jwt-decode'
 
 // const url = 'http://localhost:5000/posts';
 
-const API = axios.create({ baseURL: 'http://localhost:5000'})
+const API = axios.create({ baseURL: 'http://localhost:5000'});
+
+API.interceptors.request.use((req) => {
+    if(localStorage.getItem('profile')) {
+        //might need to change token to be the google auth unique identifier .sub
+        req.headers.authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`
+    }
+
+    return req;
+});
 
 export const createOrGetUser = (response) => {
     const decoded = jwt_decode(response.credential);
