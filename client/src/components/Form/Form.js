@@ -25,7 +25,7 @@ const Form = ({currentId, setCurrentId}) => {
         console.log('currentId in handle form', currentId)
 
         if(currentId === 0) {
-            //might not need result, just .name
+            
             dispatch(createPost({...postData, name: user?.name}));
         } else {
             dispatch(updatePost(currentId, {...postData, name: user?.name}));

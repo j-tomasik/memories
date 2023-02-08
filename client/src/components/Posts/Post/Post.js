@@ -14,6 +14,21 @@ const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
+
+    const Likes = () => {
+        if (post.likes.length > 0) {
+            
+            return post.likes.find((like) => like === (user?.sub))
+                ? (
+                    <> <ThumbUpAltIcon fontSize='small' />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length -1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` } </>
+                ) : (
+                    <> <ThumbUpAltIcon fontSize='small' />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</>
+                )
+        }
+
+        return <> <ThumbUpAltIcon fontSize='small'/>&nbsp;Like</>
+    };
+
     return(
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title}/>
