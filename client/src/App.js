@@ -15,7 +15,7 @@ const App = () => {
         
             <BrowserRouter>
                 <Container maxwidth="lg">
-                    <Navbar />
+                    {/* <Navbar /> */}
                     <Switch>
                         <Route path="/" exact component={Home}/>
                         <Route path='/auth' exact component={Auth}></Route>
