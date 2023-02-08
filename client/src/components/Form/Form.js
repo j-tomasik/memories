@@ -22,6 +22,8 @@ const Form = ({currentId, setCurrentId}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        console.log('currentId in handle form', currentId)
+
         if(currentId === 0) {
             //might not need result, just .name
             dispatch(createPost({...postData, name: user?.name}));
@@ -33,7 +35,7 @@ const Form = ({currentId, setCurrentId}) => {
     }
 
     const clear = () => {
-        setCurrentId(null);
+        setCurrentId(0);
         setPostData({ title: '', message: '', tags: '', selectedFile: '' })
     }
 
