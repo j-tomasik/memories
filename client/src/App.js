@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '@material-ui/core'
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-
+import PostDetails from './components/PostDetails/PostDetails';
 
 
 import Home from './components/Home/Home';
