@@ -11,7 +11,6 @@ import { getPosts } from '../../actions/posts';
 import useStyles from './styles';
 import Pagination from '../Pagination/Pagination';
 
-import useStyles from './styles'
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -54,12 +53,14 @@ const Home = () => {
             <Grow in>
                 <Container maxWidth='xl'>
                     <Navbar />
+
                     <Grid container className={classes.gridContainer} justifyContent="space-between" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={6} md={9}>
                             <Posts setCurrentId={setCurrentId}/>
                         </Grid>
+
                         <Grid item xs={12} sm={6} md={3}>
-                            <AppBar className={classes.appBarSearch} psotion='static' color='inherit'> 
+                            <AppBar className={classes.appBarSearch} position='static' color='inherit'> 
                                 <TextField 
                                 name='search' 
                                 variant='outlined'
@@ -83,6 +84,7 @@ const Home = () => {
                                 <Pagination />
                             </Paper>
                         </Grid>
+
                     </Grid>
                 </Container>
             </Grow>
