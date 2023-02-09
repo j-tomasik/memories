@@ -15,8 +15,8 @@ const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
-    console.log('post creator', post.creator);
-    console.log('user sub', user.sub);
+    // console.log('post creator', post.creator);
+    // console.log('user sub', user.sub);
 
     const Likes = () => {
         if (post.likes.length > 0) {
