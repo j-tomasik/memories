@@ -11,6 +11,8 @@ import { getPosts } from '../../actions/posts';
 import useStyles from './styles';
 import Pagination from '../Pagination/Pagination';
 
+import useStyles from './styles'
+
 function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
@@ -22,6 +24,10 @@ const Home = () => {
     const dispatch = useDispatch();
     const query = useQuery();
     const history = useHistory();
+    //will read the current URL
+    const page = query.get('page') || 1;
+    const searchQuery = query.get('searchQuery');
+    
 
     useEffect(() => {
         dispatch(getPosts());
@@ -32,13 +38,23 @@ const Home = () => {
 
     return (
             <Grow in>
-                <Container>
+                <Container maxWidth='xl'>
                     <Navbar />
-                    <Grid container className={classes.mainContainer} justifyContent="space-between" alignItems="stretch" spacing={3}>
-                        <Grid item xs={12} sm={7}>
+                    <Grid container className={classes.gridContainer} justifyContent="space-between" alignItems="stretch" spacing={3}>
+                        <Grid item xs={12} sm={6} md={9}>
                             <Posts setCurrentId={setCurrentId}/>
                         </Grid>
-                        <Grid item xs={12} sm={4}>
+                        <Grid item xs={12} sm={6} md={3}>
+                            <AppBar className={classes.appBarSearch} psotion='static' color='inherit'> 
+                                <TextField 
+                                name='search' 
+                                variant='outlined'
+                                label='Search Memories'
+                                fullWidth
+                                value='TEST'
+                                onChange={() => {}}
+                                />
+                            </AppBar>
                             <Form currentId={currentId} setCurrentId={setCurrentId}/>
                             <Paper className={classes.pagination} elevation={6}>
                                 <Pagination />
