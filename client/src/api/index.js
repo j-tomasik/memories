@@ -25,6 +25,7 @@ export const createOrGetUser = (response) => {
 
 
 export const fetchPosts = () => API.get('/posts');
+export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery || 'none'}&tags=${searchQuery.tags} `);
 export const createPost = (newPost) => API.post('/posts', newPost)
 export const updatePost = (id, updatedPost) => API.patch(`posts/${id}`, updatedPost)
 export const deletePost = (id) => API.delete(`/posts/${id}`);
