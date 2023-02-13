@@ -6,6 +6,7 @@ import { googleLogout } from '@react-oauth/google';
 
 import useStyles from './styles'
 import memories from '../../images/memories.png';
+import memories_header from '../../images/memories_header.png';
 import { LOGOUT } from '../../constants/actionTypes';
 
 const Navbar = () => {
@@ -37,10 +38,11 @@ const Navbar = () => {
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
-            <div className={classes.brandContainer}>
-                <Typography component={Link} to='/' className={classes.heading} variant="h2" align="center">Photos</Typography>
+            <Link to='/' className={classes.brandContainer}>
+                {/* <Typography component={Link} to='/' className={classes.heading} variant="h2" align="center">Photos</Typography> */}
+                <img src={memories_header} alt="icon" height="45px" />
                 <img className={classes.image} src={memories} alt="memories" height ="60" />
-            </div>
+            </Link>
 
             <Toolbar className={classes.profile}>
                 {user ? (
