@@ -7,7 +7,7 @@ import useStyles from './styles';
 const Paginate = () => {
     const classes = useStyles();
 
-    return(
+    return (
         <Pagination 
             classes={{ul: classes.ul}}
             count={5}
