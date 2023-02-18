@@ -5,7 +5,7 @@ export const getPosts = async (req, res) => {
     try {
         const postMessages = await PostMessage.find();
 
-        // console.log(postMessages);
+        console.log('get all posts', postMessages);
 
         res.status(200).json(postMessages);
     } catch (error) {
@@ -17,10 +17,10 @@ export const getPostsBySearch = async (req, res) => {
     const { searchQuery, tags } = req.query;
 
     try {
-        const title = new RegExp(searchQuery, 'i');
-        console.log(title);
-        console.log(tags);
-        const posts = await PostMessage.find({title});
+        // const title = new RegExp(searchQuery, 'i');
+        console.log('search query', searchQuery);
+        
+        const posts = await PostMessage.find({title: searchQuery});
         // $or: [ { title }, { tags: { $in: tags.split(',')}   }]     
         
         res.json({ data: posts });
