@@ -44,19 +44,19 @@ const Home = () => {
         }
     };
 
-    // const handleKeyPress = (e) => {
-    //     if(e.keyCode === 13) {
-    //         searchPost();
-    //     }
-    // }
+    const handleKeyPress = (e) => {
+        if(e.keyCode === 13) {
+            searchPost();
+        }
+    }
 
-    // const handleAdd = (tag) => {
-    //     setTags([...tags, tag])
-    // }
+    const handleAdd = (tag) => {
+        setTags([...tags, tag])
+    }
 
-    // const handleDelete = (tagToDelete) => {
-    //     setTags(tags.filter((tag) => tag !== tagToDelete))
-    // }
+    const handleDelete = (tagToDelete) => {
+        setTags(tags.filter((tag) => tag !== tagToDelete))
+    }
 
 
     return (
@@ -70,7 +70,7 @@ const Home = () => {
                         </Grid>
 
                         <Grid item xs={12} sm={6} md={3}>
-                            {/* <AppBar className={classes.appBarSearch} position='static' color='inherit'> 
+                            <AppBar className={classes.appBarSearch} position='static' color='inherit'> 
                                 <TextField 
                                 name='search' 
                                 variant='outlined'
@@ -89,7 +89,7 @@ const Home = () => {
                                     variant='outlined'
                                 />
                                 <Button onClick={searchPost} className={classes.searchButton} color='primary' variant='contained'>Search</Button>
-                            </AppBar> */}
+                            </AppBar>
                             <Form currentId={currentId} setCurrentId={setCurrentId}/>
                             {/* <Paper className={classes.pagination} elevation={6}>
                                 <Pagination />

@@ -43,7 +43,7 @@ const Form = ({currentId, setCurrentId}) => {
         return(
             <Paper className={classes.paper}>
                 <Typography variant='h6' align='center'>
-                    Please click the sign in button above to create your own photos upload and like other's posts.
+                    Please click the sign in button above to create and upload your own photo meories and like other's posts.
                 </Typography>
             </Paper>
         )
