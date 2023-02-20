@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import PostMessage from '../models/postMessage.js';
 
 export const getPosts = async (req, res) => {
+    console.log('getting all posts');
+
     try {
         const postMessages = await PostMessage.find();
 
@@ -14,11 +16,14 @@ export const getPosts = async (req, res) => {
 }
 
 export const getPostsBySearch = async (req, res) => {
-    console.log('get by search')
     const { searchQuery, tags } = req.query;
 
+    
+    // let query = JSON.parse(searchQuery);
+    // let newTags = JSON.parse(tags);
+    console.log('query', searchQuery);
     try {
-        console.log('search query', searchQuery);
+        
         
         const posts = await PostMessage.find({
             $or: [
@@ -26,8 +31,10 @@ export const getPostsBySearch = async (req, res) => {
                 { tags: { $in: tags.split(",") } },
                 ],
         });     
-        
+
+        console.log('posts', posts);
         res.json({ data: posts });
+
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
