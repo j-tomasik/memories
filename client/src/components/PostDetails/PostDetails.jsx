@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useHistory } from 'react-router-dom';
 
+
+import { getPost } from '../../actions/post';
+
 import useStyles from './styles';
 
 const PostDetails = () => {
@@ -12,6 +15,10 @@ const PostDetails = () => {
     const history = useHistory();
     const classes = useStyles();
     const { id } = useParams();
+
+    useEffect(() => {
+        dispatch(getPost(id));
+    }, [dispatch, id]);
 
 
   return (
