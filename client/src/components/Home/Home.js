@@ -91,9 +91,9 @@ const Home = () => {
                                 <Button onClick={searchPost} className={classes.searchButton} color='primary' variant='contained'>Search</Button>
                             </AppBar>
                             <Form currentId={currentId} setCurrentId={setCurrentId}/>
-                            {/* <Paper className={classes.pagination} elevation={6}>
+                            <Paper className={classes.pagination} elevation={6}>
                                 <Pagination />
-                            </Paper> */}
+                            </Paper>
                         </Grid>
 
                     </Grid>
