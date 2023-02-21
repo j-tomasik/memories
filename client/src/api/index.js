@@ -1,9 +1,10 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode'
 
-// const url = 'http://localhost:5000/posts';
+// const url = 'http://localhost:5000';
+//https://mems-app.herokuapp.com
 
-const API = axios.create({ baseURL: 'https://mems-app.herokuapp.com'});
+const API = axios.create({ baseURL: 'http://localhost:5000'});
 
 
 API.interceptors.request.use((req) => {
