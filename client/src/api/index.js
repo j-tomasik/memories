@@ -3,8 +3,8 @@ import jwt_decode from 'jwt-decode'
 
 // const url = 'http://localhost:5000/posts';
 
-const API = axios.create({ baseURL: 'http://localhost:5000'});
-//'https://mems-app.herokuapp.com'
+const API = axios.create({ baseURL: 'https://mems-app.herokuapp.com'});
+
 
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('profile')) {
@@ -18,7 +18,6 @@ API.interceptors.request.use((req) => {
 
 export const createOrGetUser = (response) => {
     const decoded = jwt_decode(response.credential);
-    console.log('decoded token in getUser', decoded);
 
     return decoded;
 };
