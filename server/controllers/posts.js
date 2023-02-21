@@ -18,13 +18,7 @@ export const getPosts = async (req, res) => {
 export const getPostsBySearch = async (req, res) => {
     const { searchQuery, tags } = req.query;
 
-    
-    // let query = JSON.parse(searchQuery);
-    // let newTags = JSON.parse(tags);
-    console.log('query', searchQuery);
     try {
-        
-        
         const posts = await PostMessage.find({
             $or: [
                 { title: { $regex: searchQuery, $options: "i" } },
@@ -32,7 +26,6 @@ export const getPostsBySearch = async (req, res) => {
                 ],
         });     
 
-        console.log('posts', posts);
         res.json({ data: posts });
 
     } catch (error) {
