@@ -16,6 +16,7 @@ const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
+    const history = useHistory();
 
     const Likes = () => {
         if (post.likes.length > 0) {
@@ -34,7 +35,7 @@ const Post = ({ post, setCurrentId }) => {
     };
 
     const openPost = () => {
-
+        history.push(`/posts/${post._id}`);
     }
 
     return(
