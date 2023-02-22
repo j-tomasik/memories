@@ -5,7 +5,7 @@ import moment from 'moment';
 import { useParams, useHistory } from 'react-router-dom';
 
 
-import { getPost } from '../../actions/post';
+import { getPost } from '../../actions/posts';
 
 import useStyles from './styles';
 

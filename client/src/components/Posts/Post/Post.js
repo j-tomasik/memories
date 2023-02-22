@@ -37,10 +37,10 @@ const Post = ({ post, setCurrentId }) => {
     const openPost = () => {
         history.push(`/posts/${post._id}`);
     }
-
+    console.log('post', post)
     return(
         <Card className={classes.card} raised elevation={6}>
-            <ButtonBase className={classes.cardAction} onClick={openPost}> 
+            {/* <ButtonBase className={classes.cardAction} onClick={openPost}>  */}
 
                 <CardMedia className={classes.media} image={post.selectedFile} title={post.title}/>
                 <div className={classes.overlay}>
@@ -62,7 +62,7 @@ const Post = ({ post, setCurrentId }) => {
                 <CardContent>
                     <Typography variant="body2" color={"textSecondary"} component="p" >{post.message}</Typography>
                 </CardContent>
-            </ButtonBase>
+            {/* </ButtonBase> */}
             <CardActions className={classes.cardActions}>
 
                 <Button size="small" color="primary" disabled={!user?.sub} onClick={() => dispatch(likePost(post._id))}>

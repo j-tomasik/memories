@@ -3,13 +3,15 @@ import PostMessage from '../models/postMessage.js';
 
 export const getPosts = async (req, res) => {
     const { page } = req.query;
+    console.log('page', page);
 
     try {
-        const LIMIT = 8;
+        const LIMIT = 9;
         const startIndex = (Number(page) - 1) * LIMIT;
         const total = await PostMessage.countDocuments({});
+        console.log('total',total);
 
-        const posts = await PostMessage.find().sort({_id: -1}).limit(LIMIT).skip(startIndex);
+        const posts = await PostMessage.find().sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
 
         res.status(200).json({data: posts, currentPage: Number(page), numberOfPages: Math.ceil(total / LIMIT) });
     } catch (error) {
