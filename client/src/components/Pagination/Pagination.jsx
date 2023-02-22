@@ -14,6 +14,7 @@ const Paginate = ({ page }) => {
 
 
     useEffect(() => {
+        console.log('page in use effect',page);
         if(page) dispatch(getPosts(page));
     }, [page]);
 

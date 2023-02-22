@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { googleLogout } from '@react-oauth/google';
 
 import useStyles from './styles'
-import memories from '../../images/memories.png';
+import memories from '../../images/memories.png'
 import memories_header from '../../images/memories_header.png';
 import { LOGOUT } from '../../constants/actionTypes';
 

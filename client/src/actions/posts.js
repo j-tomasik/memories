@@ -2,9 +2,10 @@ import { FETCH_ALL, CREATE, UPDATE, DELETE, FETCH_BY_SEARCH, FETCH_POST, START_L
 import * as api from '../api/index.js';
 
 export const getPosts = (page) => async (dispatch) => {
+    console.log('get posts');
     try {
         const { data } = await api.fetchPosts(page);
-
+        console.log(data);
         dispatch({ type: FETCH_ALL, payload: data });
     } catch (error) {
         console.log(error)
