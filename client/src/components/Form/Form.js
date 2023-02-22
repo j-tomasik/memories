@@ -22,7 +22,7 @@ const Form = ({currentId, setCurrentId}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log('currentId in handle form', currentId)
+        
 
         if(currentId === 0) {
             

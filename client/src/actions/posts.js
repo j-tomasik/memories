@@ -41,6 +41,7 @@ export const updatePost = (id, post) => async (dispatch) => {
 
 
         dispatch({ type: UPDATE, payload: data })
+        dispatch({ type: END_LOADING});
     } catch (error) {
         console.log(error)
     }
@@ -51,6 +52,7 @@ export const deletePost = (id) => async (dispatch) => {
         await api.deletePost(id);
 
         dispatch({ type: DELETE, payload: id})
+        dispatch({ type: END_LOADING});
     } catch (error) {
         console.log(error);
     }
@@ -61,6 +63,7 @@ export const likePost = (id) => async (dispatch) => {
         const { data } = await api.likePost(id);
 
         dispatch({ type: UPDATE, payload: data })
+        dispatch({ type: END_LOADING});
     } catch (error) {
         console.log(error)
     }
