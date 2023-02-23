@@ -20,7 +20,7 @@ export const getPosts = async (req, res) => {
 
 export const getPostsBySearch = async (req, res) => {
     const { searchQuery, tags } = req.query;
-
+    
     try {
         const posts = await PostMessage.find({
             $or: [
@@ -28,7 +28,7 @@ export const getPostsBySearch = async (req, res) => {
                 { tags: { $in: tags.split(",") } },
                 ],
         });     
-
+        
         res.json({ data: posts });
 
     } catch (error) {
@@ -38,6 +38,7 @@ export const getPostsBySearch = async (req, res) => {
 
 export const getPost = async (req, res) => {
         const { id } = req.params;
+    
 
     try {
         const post = await PostMessage.findById(id);
