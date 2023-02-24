@@ -47,7 +47,13 @@ const Post = ({ post, setCurrentId }) => {
                     <Typography variant='h6'>{post.name}</Typography>
                     <Typography variant='body2'>{moment(post.createdAt).fromNow()}</Typography>
                 </div>
-        
+                {/* {(user?.sub === post?.creator) && (
+                    <div className={classes.overlay2}>
+                    <Button style={{color: 'blue'}} size="small" onClick={() => setCurrentId(post._id)}>
+                        <MoreHorizIcon fontSize="medium"/>
+                    </Button>
+                </div>
+                )} */}
                 <div className={classes.details}>
                     <Typography variant="body2" color="textSecondary">{post.tags.map((tag) => `#${tag} `)}</Typography>
                 </div>
