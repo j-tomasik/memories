@@ -3,7 +3,7 @@ import { Paper, Typography, CircularProgress, Divider } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useHistory } from 'react-router-dom';
-
+import Navbar from '../Navbar/Navbar'
 
 import { getPost, getPostsBySearch } from '../../actions/posts';
 
@@ -44,6 +44,7 @@ const PostDetails = () => {
 
   return (
     <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
+      <Navbar />
       <div className={classes.card}>
           <div className={classes.section}>
             <Typography variant="h3" component="h2">{post.title}</Typography>
