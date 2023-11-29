@@ -9,7 +9,7 @@ const Posts = ({ setCurrentId }) => {
     const { posts, isLoading } = useSelector((state) => state.posts)
     const classes = useStyles();
 
-    if (!posts.length && !isLoading) return 'no posts';
+    if (!posts.length && !isLoading) return 'Sorry, no posts were found, try another seach or click on the logo to return to home page';
     
     return(
         isLoading ? <CircularProgress /> : (
