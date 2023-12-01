@@ -5,8 +5,7 @@ const auth = async (req, res, next) => {
         
         const token = req.headers.authorization.split(' ')[1];
         
-        // let decodedData = jwt.decode(token);
-        // console.log('decoded token in middleware', decodedData)
+    
         req.userId = token;
 
         next();
