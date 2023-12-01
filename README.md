@@ -1,4 +1,4 @@
-# memories
+# Memories
 Here is the URL for the live site: 
 https://jt-memories.netlify.app/
 
@@ -17,7 +17,9 @@ unique page. You can see other comments as well as other posts with matching tag
 -A post can have multiple tags and I recommend using comma seperation for the backend to proerly parse out the tags.
 
 -Once you create a post, you can edit the post by clicking the three dots on the posts picture from the home page.
-The create form will now change to be an editing form, it's header will change and the entry bars will populate with the current data.
+
+-The create form will now change to be an editing form, it's header will change and the entry bars will populate with the current data.
+-
 Once you have changed this information to your liking you can click the submit button and the newly edited post should appear.
 
 -You can also delete your posts as well as like and comment on them.
