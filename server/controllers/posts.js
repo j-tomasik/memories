@@ -7,13 +7,13 @@ export const getPosts = async (req, res) => {
     try {
         //this var is for number of posts per page
         const LIMIT = 4;
-        //1-1 == 0 * 4, 2-1 == 1 * 4 ->start second page with idx 4 post
+        //subtracts 1 to offset for zero indexing, page 1 had posts 0-3, page 2 posts 4-7, etc...
         const startIndex = (Number(page) - 1) * LIMIT;
-        //gets the count of posts from db
+        //gets the count of total posts from db
         const total = await PostMessage.countDocuments({});
-        //sorts and then limits to num of posts per page, then skips to correct start for given page
+        //sorts and then limits to num of posts per page, then skips to correct start idx for given page
         const posts = await PostMessage.find().sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
-
+        //returns current page and num of pages for frontend state to display 
         res.status(200).json({data: posts, currentPage: Number(page), numberOfPages: Math.ceil(total / LIMIT) });
     } catch (error) {
         res.status(404).json({ message: error.message });
@@ -25,6 +25,7 @@ export const getPostsBySearch = async (req, res) => {
     
     try {
         const posts = await PostMessage.find({
+            //using find() and $or to search for posts that satisfy at least one of the conditions
             $or: [
                 { title: { $regex: searchQuery, $options: "i" } },
                 { tags: { $in: tags.split(",") } },
