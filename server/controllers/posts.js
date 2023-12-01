@@ -27,7 +27,12 @@ export const getPostsBySearch = async (req, res) => {
         const posts = await PostMessage.find({
             //using find() and $or to search for posts that satisfy at least one of the conditions
             $or: [
+
+                //searches for posts where the 'title' field matches the searchQuery, using a case-insensitive regular expression
                 { title: { $regex: searchQuery, $options: "i" } },
+                
+                //searches for posts where the 'tags' array contains any one of the tags provided in the search param
+                //using a comma seperated string for multiple tags
                 { tags: { $in: tags.split(",") } },
                 ],
         });     
