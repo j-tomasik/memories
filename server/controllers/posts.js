@@ -5,10 +5,13 @@ export const getPosts = async (req, res) => {
     const { page } = req.query;
     
     try {
+        //this var is for number of posts per page
         const LIMIT = 4;
+        //1-1 == 0 * 4, 2-1 == 1 * 4 ->start second page with idx 4 post
         const startIndex = (Number(page) - 1) * LIMIT;
+        //gets the count of posts from db
         const total = await PostMessage.countDocuments({});
-
+        //sorts and then limits to num of posts per page, then skips to correct start for given page
         const posts = await PostMessage.find().sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
 
         res.status(200).json({data: posts, currentPage: Number(page), numberOfPages: Math.ceil(total / LIMIT) });
