@@ -123,12 +123,14 @@ export const likePost = async (req, res) => {
         //filters out the user's like to remove from likes arr
         post.likes = post.likes.filter((id) => {id !== String(req.userId)});
     }
-
+    //saves the psot and gives it a boolean of true for new so that frontend can change like display
     const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
     
     res.json(updatedPost);
 }
 
+
+//update post by grabbing data model from DB, adding comment to comments array and then updating in backend
 export const commentPost = async (req, res) => {
     const { id } = req.params;
     const { value } = req.body;
