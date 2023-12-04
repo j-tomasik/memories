@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import PostMessage from '../models/postMessage.js';
 
+        //Function for home page to show all the photo posts from all users
 export const getPosts = async (req, res) => {
     const { page } = req.query;
     
@@ -20,6 +21,7 @@ export const getPosts = async (req, res) => {
     }
 }
 
+//function to query the database for posts that match search criteria for either search string in title name or tag included in post's tags
 export const getPostsBySearch = async (req, res) => {
     const { searchQuery, tags } = req.query;
     
