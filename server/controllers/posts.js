@@ -46,6 +46,8 @@ export const getPostsBySearch = async (req, res) => {
     }
 }
 
+
+//function for grabbing a single post based in ID params
 export const getPost = async (req, res) => {
         const { id } = req.params;
     
@@ -60,6 +62,7 @@ export const getPost = async (req, res) => {
 
 }
 
+//Creating a new post, saving to db with time of creation and giving the post a creator id
 export const createPost = async (req, res) => {
     const post = req.body;
     
@@ -73,13 +76,15 @@ export const createPost = async (req, res) => {
     }
 }
 
+
+//Function for updating posts
 export const updatePost = async (req,res) => {
     const { id: _id } = req.params;
     const post = req.body;
-    
+    //error handling for when there is no post with the id from the search request
     if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No post with that id');
 
-    
+    //using and by and update, could look to optimize this later
     const updatedPost = await PostMessage.findByIdAndUpdate(_id, { ...post, _id }, { new: true });
 
     res.json(updatedPost);
