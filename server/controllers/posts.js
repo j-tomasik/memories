@@ -104,21 +104,23 @@ export const deletePost = async (req, res) => {
 }
 
 
-
+//logic from both liking and unliking a post, could be made more modular but handles use case well
 export const likePost = async (req, res) => {
     const { id } = req.params;
-
+    //makes sure the user is logged in as prereq for liking
     if(!req.userId) return res.json({ message: 'Unauthenticated' })
-
+    //handles incorrect post IDs
     if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No post with that id');
-
+    //grabs post from DB
     const post = await PostMessage.findById(id);
-
+    //finds idx if user already liked
+    //returns -1 if no idx found, and then can add in the like and ID
     const index = post.likes.findIndex((id) => id === String(req.userId));
 
     if(index === -1) {
         post.likes.push(req.userId);
     } else {
+        //filters out the user's like to remove from likes arr
         post.likes = post.likes.filter((id) => {id !== String(req.userId)});
     }
 
